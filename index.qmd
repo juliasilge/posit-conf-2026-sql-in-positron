@@ -1,0 +1,68 @@
+---
+title: "SQL as a first-class language in your data science IDE"
+author: "Brian Lambert & Julia Silge"
+date: "2026-09-15"
+---
+
+*Talk given at [posit::conf 2026](https://pos.it/conf). This page walks through the main points of the talk, with recordings of each demo.*
+
+In most data science tools, SQL is a second-class citizen: a string embedded in R or Python code, with no autocomplete, no interactive feedback, and no way to look at your data without first pulling it into memory. In this talk, we show what it looks like when your IDE treats SQL as a first-class language across the whole workflow: **connect**, **explore**, **iterate**, and **understand**.
+
+Everything is demoed against a bikeshare database with tables for bikes, memberships, riders, stations, hourly weather, and two million trips, plus curated views like `station_activity` and `popular_routes`. The same features work across database engines, from local DuckDB and SQLite files to Snowflake.
+
+## Connect
+
+The Data Connections pane is home base for every database you work with. Live connections sit side by side regardless of engine: local DuckDB and SQLite files, a data warehouse like Snowflake, or pinned data on Posit Connect.
+
+Adding a connection is a guided dialog rather than boilerplate code in a script. For Snowflake, for example, you can authenticate with single sign-on through an external browser, reuse a named connection from your existing `~/.snowflake/connections.toml`, or use a programmatic access token. Credentials stay out of your source files, and the connection lives in the IDE where you can see and manage it.
+
+{{< video videos/posit-conf-2026-connect.mp4 title="Adding and managing database connections" >}}
+
+## Explore
+
+Once connected, you can browse the schema directly: expand a connection to see its tables and views, then open any of them in the Data Explorer. The data never has to leave the database; the `trips` table here has 2,000,000 rows and 17 columns, and opening it is instant.
+
+The Data Explorer gives you the shape of your data at a glance: column types, distributions, and the percentage of missing values for every column. You can sort and filter interactively, with the work pushed down to the database, and **Convert to Code** turns what you've built interactively into a query you can keep. This is the fastest way to get oriented in a database you've never seen before.
+
+{{< video videos/posit-conf-2026-explore.mp4 title="Exploring tables and views in the Data Explorer" >}}
+
+## Iterate
+
+When it's time to write queries, SQL runs in its own console, powered by the ggsql Jupyter kernel. Point the session at a database with a connection comment and start writing SQL:
+
+```sql
+-- @connect: sqlite:///path/to/bikeshare.sqlite
+SELECT * FROM memberships;
+```
+
+Results come back inline, immediately. This is the iteration loop SQL users expect: write a query, see the result, refine, repeat, without leaving the console or wrapping anything in another language's API.
+
+{{< video videos/posit-conf-2026-iterate.mp4 title="Iterating on queries in the SQL console" >}}
+
+## Understand
+
+Exploration and iteration get you to answers; these last two demos are about building durable understanding you can share.
+
+### Quarto documents
+
+SQL is a first-class citizen in Quarto, too. Executable `{ggsql}` chunks sit alongside narrative text, so an analysis reads as a document rather than a pile of scripts. The demo document, *The Bikes That Never Came Back*, investigates lost bikes (and their $1,200 replacement fees) and how rides are priced, mixing prose with live queries against the database. Preview renders the document in the Viewer as you work.
+
+{{< video videos/posit-conf-2026-quarto.mp4 title="SQL chunks in a Quarto document" >}}
+
+### Posit Assistant
+
+Posit Assistant can see your connections and work with your databases directly. It writes and executes SQL itself, for example aggregating trips by month with `strftime` to look at seasonality, and it surfaces semantics that a bare schema can't tell you. In the demo, it notices that `battery_wh` is NULL exactly for classic bikes: NULL means "no battery," not missing data, which changes how you'd filter or aggregate. It also suggests follow-up questions, so understanding compounds instead of stalling.
+
+{{< video videos/posit-conf-2026-understand.mp4 title="Posit Assistant querying the database" >}}
+
+## Takeaways
+
+SQL as a first-class language means it works the same way everywhere in the IDE:
+
+- **Connections pane** for adding and managing databases, with credentials handled outside your code
+- **Data Explorer** for looking at remote tables and views without loading them into memory
+- **SQL console** for a fast, interactive query loop
+- **Quarto** for reproducible documents where SQL and narrative live together
+- **Posit Assistant** for an AI collaborator that can query your database and explain what it finds
+
+To try it yourself, download [Positron](https://positron.posit.co) and read more in the [Positron documentation](https://positron.posit.co/data-connections.html).

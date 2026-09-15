@@ -1,0 +1,15 @@
+project:
+  type: website
+
+brand: _brand/_brand.yml
+
+website:
+  title: "SQL as a first-class language in your data science IDE"
+  description: "posit::conf 2026 talk by Brian Lambert & Julia Silge"
+  page-footer:
+    center: "Brian Lambert & Julia Silge · posit::conf 2026"
+
+format:
+  html:
+    toc: true
+    page-layout: article

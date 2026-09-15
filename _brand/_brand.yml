@@ -1,0 +1,314 @@
+## ---------------------------------------------------------------------------
+## Posit brand.yaml
+## Single source of truth for on-brand Quarto output (docs, slides, websites).
+##
+## HOW TO USE (for anyone on the team):
+## 1. Drop this file, plus the `logos/` and `fonts/` folders next to it, into
+##    the root of your Quarto project (same level as _quarto.yml).
+## 2. In _quarto.yml, add:
+##      brand: _brand.yaml
+##    (Quarto auto-detects a file literally named _brand.yaml in the project
+##    root, so this line is optional but explicit is nice.)
+## 3. That's it — html, pdf, docx, revealjs, and pptx output all pick up the
+##    logo, colors, and fonts automatically. No per-document theming needed.
+##
+## Reference: https://quarto.org/docs/authoring/brand.html
+## Source of truth for these values: Posit Brand Skill (references/colors.md,
+## typography.md, logo.md) — do not hand-edit hex codes; update here instead.
+## ---------------------------------------------------------------------------
+
+meta:
+  name:
+    short: Posit
+    full: Posit Software, PBC
+  link:
+    home: https://posit.co
+    github: https://github.com/posit-dev
+    bluesky: https://bsky.app/profile/posit.co
+    mastodon: https://fosstodon.org/@Posit
+
+# -----------------------------------------------------------------------------
+# LOGO
+# Always use these files — never regenerate/redraw the mark.
+# Full-color/black = light backgrounds only. Reverse/white = dark backgrounds.
+# -----------------------------------------------------------------------------
+logo:
+  images:
+    posit-full-color:
+      path: logos/posit-horiz-full-color.png
+      alt: Posit logo.
+    posit-black:
+      path: logos/posit-horiz-black.png
+      alt: Posit logo.
+    posit-reverse:
+      path: logos/posit-horiz-reverse.png
+      alt: Posit logo.
+    posit-white:
+      path: logos/posit-horiz-white.png
+      alt: Posit logo.
+    posit-vertical-full-color:
+      path: logos/posit-vertical-full-color.png
+      alt: Posit logo.
+    posit-vertical-reverse:
+      path: logos/posit-vertical-reverse.png
+      alt: Posit logo.
+    creators-of-rstudio:
+      path: logos/creators-of-rstudio.png
+      alt: Creators of RStudio.
+  small: posit-full-color        # favicons, compact nav
+  medium: posit-full-color       # doc/site headers on light backgrounds
+  large: posit-reverse           # title slides, dark cover pages
+
+# -----------------------------------------------------------------------------
+# COLOR
+# Primary palette = Blue, Gray, Orange. Blue/gray build structure, orange is
+# for emphasis only (never body text, never on a blue field).
+# Secondary palette (teal/green/burgundy) is illustration/chart-only — mapped
+# below so chart series can pull from the palette, but never bind them to
+# theme roles used for text or UI (that's why they're not used as
+# success/info/etc. below).
+# -----------------------------------------------------------------------------
+color:
+  palette:
+    blue: "#447099"          # Posit Blue — primary
+    gray: "#404041"          # Posit Gray — primary, headline/body text
+    orange: "#EE6331"        # Posit Orange — emphasis only
+    white: "#FFFFFF"
+    off-white: "#F3F6F8"     # subtle surface
+    light-gray: "#717171"    # body copy on light backgrounds
+    dark-blue-2: "#22384C"   # dark section alt
+    dark-blue-3: "#111C26"   # dark section / high-impact dividers
+    hover-blue: "#3276B5"
+    teal: "#419599"          # secondary — illustration/charts only
+    green: "#72994E"         # secondary — illustration/charts only
+    burgundy: "#9A4665"      # secondary — illustration/charts only
+    error-red: "#D44000"     # semantic — genuine errors only
+    warning-yellow: "#E7B10A" # semantic — genuine warnings only
+    # Extended ramps (light/dark 1–3 per hue), for charts and illustration —
+    # never bind these to theme roles. From the pre-kit brand file; dark-blue
+    # 2/3 are omitted because the kit defines those names above (with
+    # slightly different values).
+    light-blue-1: "#d1dbe5"
+    light-blue-2: "#a2b8cb"
+    light-blue-3: "#7494b1"
+    dark-blue-1: "#305775"
+    light-gray-1: "#c2c2c4"
+    light-gray-2: "#949494"
+    light-gray-3: "#707073"
+    dark-gray-1: "#333333"
+    dark-gray-2: "#242426"
+    dark-gray-3: "#151515"
+    light-teal-1: "#c2d9d9"
+    light-teal-2: "#94bdbf"
+    light-teal-3: "#70a3a6"
+    dark-teal-1: "#297075"
+    dark-teal-2: "#1f4f4f"
+    dark-teal-3: "#122b2b"
+    light-green-1: "#cfd9c7"
+    light-green-2: "#adbf99"
+    light-green-3: "#8aa67a"
+    dark-green-1: "#57733d"
+    dark-green-2: "#3b4f29"
+    dark-green-3: "#212b1c"
+    light-red-1: "#f2c2c2"
+    light-red-2: "#e59494"
+    light-red-3: "#d66f6f"
+    dark-red-1: "#a63d3d"
+    dark-red-2: "#7a2b2b"
+    dark-red-3: "#4f1919"
+    light-burgundy-1: "#d9c4cc"
+    light-burgundy-2: "#bf96a3"
+    light-burgundy-3: "#a67380"
+    dark-burgundy-1: "#78384f"
+    dark-burgundy-2: "#542938"
+    dark-burgundy-3: "#2e171f"
+    light-orange-1: "#edccbf"
+    light-orange-2: "#eba38c"
+    light-orange-3: "#e58066"
+    dark-orange-1: "#ab4d26"
+    dark-orange-2: "#80361c"
+    dark-orange-3: "#451f12"
+    light-yellow-1: "#efdeb9"
+    light-yellow-2: "#f5d487"
+    light-yellow-3: "#f4c540"
+    dark-yellow-1: "#c48f0a"
+    dark-yellow-2: "#9b6c04"
+    dark-yellow-3: "#6d4a03"
+
+  foreground: gray
+  background: white
+  primary: blue
+  secondary: gray
+  tertiary: off-white
+  success: green
+  info: blue
+  warning: warning-yellow
+  danger: error-red
+  light: off-white
+  dark: dark-blue-3
+
+# -----------------------------------------------------------------------------
+# TYPOGRAPHY
+# Open Sans for everything readable (Light 300 headlines, Bold 700 sub-heads,
+# Regular 400 body — there is no 600/semibold, don't let a tool substitute
+# one). Source Code Pro is reserved for uppercase eyebrows/labels only, so it
+# is wired up as the "monospace-inline" family rather than base/headings.
+# Arial is the approved office fallback (Word/PowerPoint/Docs) when webfonts
+# aren't available.
+# -----------------------------------------------------------------------------
+typography:
+  # Families are listed twice. The `file` entries are what html and typst
+  # actually use; the `bunny` (CDN) entries exist for revealjs, where the
+  # file @font-face paths are broken (quarto-dev/quarto-cli#14284) and the
+  # browser falls back to the CDN. Keep bunny weights in sync with the file
+  # entries — headings need 300.
+  fonts:
+    - family: Open Sans
+      source: file
+      files:
+        - path: fonts/OpenSans.ttf
+          weight: 300
+        - path: fonts/OpenSans.ttf
+          weight: 400
+        - path: fonts/OpenSans.ttf
+          weight: 700
+        - path: fonts/OpenSans-Italic.ttf
+          weight: 400
+          style: italic
+    - family: Open Sans
+      source: bunny
+      weight: [300, 400, 700]
+    - family: Source Code Pro
+      source: file
+      files:
+        - path: fonts/SourceCodePro.ttf
+          weight: 400
+        - path: fonts/SourceCodePro-Italic.ttf
+          weight: 400
+          style: italic
+    - family: Source Code Pro
+      source: bunny
+      weight: [400]
+
+  base:
+    family: Open Sans
+    weight: 400
+    # No `size:` — Quarto maps base.size onto every format's root size, so
+    # `1rem` here shrinks revealjs to 16px (its default is 40px). Each
+    # format's own default is already right.
+    line-height: 1.6
+
+  headings:
+    family: Open Sans
+    weight: 300          # Light — all display/hero/headlines
+    color: gray
+    line-height: 1.2
+
+  monospace:
+    family: Source Code Pro
+    weight: 400
+
+  monospace-inline:
+    family: Source Code Pro
+    weight: 400
+
+  monospace-block:
+    family: Source Code Pro
+    weight: 400
+
+  link:
+    color: blue
+    weight: 400
+    decoration: underline
+
+# -----------------------------------------------------------------------------
+# DEFAULTS
+# Format-specific knobs. Fills in the two most common outputs — websites/docs
+# (bootstrap) and slide decks (revealjs) — with brand-correct spacing and
+# dark-section handling. Extend per-project as needed (e.g. pptx-specific
+# tweaks live in a PowerPoint template, not here — see note at bottom).
+# -----------------------------------------------------------------------------
+defaults:
+  bootstrap:
+    defaults:
+      # body-color/link-color come from color.foreground/color.link; hover
+      # has no brand role, so set it here.
+      link-hover-color: "$brand-hover-blue"
+      # Callouts derive from Bootstrap's $yellow/$red, which our semantic
+      # palette names don't populate (quarto-dev/quarto-cli#14092).
+      yellow: "$brand-warning-yellow"
+      red: "$brand-error-red"
+      # Page-colored navbar rather than Quarto's primary-blue default, so
+      # the logo the navbar picks up (full-color, via `small`) always works.
+      # See README for opting back into a colored navbar.
+      navbar-bg: "$body-bg"
+      navbar-fg: "$body-color"
+    # Hairline border to separate the page-colored navbar from the page,
+    # and wordmark-baseline alignment of the navbar title: flex `baseline`
+    # puts the logo's bottom edge on the title baseline, then the translate
+    # shifts the logo down by the measured gap between the wordmark baseline
+    # and the image bottom (22.5% of posit-horiz-*.png height).
+    rules: |
+      .navbar {
+        border-bottom: 1px solid tint-color($brand-gray, 80%);
+      }
+      .navbar .navbar-brand-container {
+        align-items: baseline;
+      }
+      .navbar img.navbar-logo {
+        transform: translateY(22.5%);
+      }
+
+  # Merged beneath each document's own metadata. (A bare
+  # `defaults: revealjs:` key is silently ignored, and pandoc options like
+  # syntax-highlighting are also NOT carried — only Quarto metadata.)
+  quarto:
+    format:
+      revealjs:
+        # Reveal hardcodes callout colors and ignores defaults.bootstrap
+        # (hover), so patch both via the --brand-* variables the brand
+        # system emits. Merges with (not replaces) a document's own
+        # header-includes. Remove when quarto-dev/quarto-cli#14092 ships.
+        header-includes: |
+          <style>
+          .reveal a:hover { color: var(--brand-hover-blue); }
+          .reveal div.callout.callout-note { border-left-color: var(--brand-blue); }
+          .reveal div.callout.callout-tip { border-left-color: var(--brand-green); }
+          .reveal div.callout.callout-warning { border-left-color: var(--brand-warning-yellow); }
+          .reveal div.callout.callout-caution { border-left-color: var(--brand-orange); }
+          .reveal div.callout.callout-important { border-left-color: var(--brand-error-red); }
+          .reveal div.callout.callout-note.callout-style-default .callout-title { background-color: color-mix(in srgb, var(--brand-blue) 10%, white); }
+          .reveal div.callout.callout-tip.callout-style-default .callout-title { background-color: color-mix(in srgb, var(--brand-green) 10%, white); }
+          .reveal div.callout.callout-warning.callout-style-default .callout-title { background-color: color-mix(in srgb, var(--brand-warning-yellow) 10%, white); }
+          .reveal div.callout.callout-caution.callout-style-default .callout-title { background-color: color-mix(in srgb, var(--brand-orange) 10%, white); }
+          .reveal div.callout.callout-important.callout-style-default .callout-title { background-color: color-mix(in srgb, var(--brand-error-red) 10%, white); }
+          </style>
+        slide-number: false
+        transition: fade
+        # Explicit so slides keep the full logo even if `small` (the
+        # fallback role) later becomes an icon mark.
+        logo: posit-full-color
+        # If you later add a custom .scss for slide-specific tweaks, wire it
+        # in with `theme: [default, your-file.scss]` — brand colors/fonts
+        # still apply underneath it.
+      typst:
+        # Quarto's defaults (1.5in logo at 0.75in inset) leave the running
+        # logo nearly touching body text at the 1.25in top margin on pages
+        # 2+. Smaller and higher keeps it clear of the text block.
+        logo:
+          path: posit-full-color
+          width: 1.25in
+          padding: 0.5in
+        # More whitespace around headings than the typst default.
+        include-before-body:
+          - text: |
+              #show heading: set block(above: 1.8em, below: 1em)
+
+## ---------------------------------------------------------------------------
+## NOT covered here (by design — these need real design files, not YAML):
+## - PowerPoint (pptx) and Word (docx): brand files can't theme Office
+##   placeholders; on-brand reference docs will ship as a separate Quarto
+##   format extension.
+## - The rounded "frame" web device and photography/duotone treatments are
+##   web/marketing-specific and live outside brand.yml's scope.
+## ---------------------------------------------------------------------------
